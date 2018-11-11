@@ -32,5 +32,18 @@ t <- xtabs(~education + spontaneous, infert_df)
 margin.table(t, 1)
 
 # Exercise 4
-verginica <- iris_df[iris_df$Species == 'verginica']
-cov(t(verginica$Petal.Length), t(verginica$Sepal.Length))
+
+verginica <- iris_df[iris_df$Species == 'virginica', ]
+setosa <- iris_df[iris_df$Species == 'setosa', ]
+cov(verginica$Petal.Length, verginica$Sepal.Length)
+cov(setosa$Petal.Length, setosa$Sepal.Length)
+
+# Exercise 5
+cov(verginica$Petal.Length, verginica$Sepal.Length)
+cov(setosa$Petal.Length, setosa$Sepal.Length)
+
+# Exercise 6
+library(DAAG)
+ais_df <- data.frame(ais)
+pairs(~rcc+wcc+hc+hg+ferr+bmi+ssf+pcBfat+lbm+ht+wt,data=ais_df,
+      main="Simple Scatterplot Matrix")
