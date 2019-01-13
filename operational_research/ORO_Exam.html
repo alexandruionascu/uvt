@@ -13274,7 +13274,7 @@ div#notebook {
 <td></td>
 </tr>
 <tr>
-<td>Z - C</td>
+<td></td>
 <td>1</td>
 <td>-4</td>
 <td>0</td>
@@ -13284,7 +13284,7 @@ div#notebook {
 </tbody>
 </table>
 <p>We have -4 as the negative minimum on the second column and 2 as the minimum ratio on the second row.
-The entering variable is $y_2$ and the leaving basis $y_4$.</p>
+The entering variable is $y_2$ and the leaving one is $y_4$.</p>
 <p>We apply the following transformation: $ r1 \leftarrow r1 - 4r_2 $</p>
 <table>
 <thead><tr>
@@ -13338,7 +13338,7 @@ The entering variable is $y_2$ and the leaving basis $y_4$.</p>
 <td>0</td>
 </tr>
 <tr>
-<td>Z - C</td>
+<td></td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
@@ -13551,12 +13551,13 @@ Min Sum of Y&#39;s =  28.0
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Cuts are stronger constraints that can help solving complex MILP problems by reducing the feasible region, thus making them simpler to solve. The set of feasible solutions is not affected in the integer programming problem.</p>
 <p>When we have a constraint in the form of a knapsack constraint we can add cover cuts. The subset of the variables which would violate the inequality if they were all set with 1, would form a minimal cover, but only if we can exclude a single element from the set, the initial inequality must hold.</p>
-<p>Example:
-$2x_1 + x_2 + 5x_3 ≥ 6$</p>
-<p>$x_1, x_2, x_3 \in \{0,1\}$</p>
-<p>Let C = {1,2} be our minimal cover.</p>
-<p>Then $b - \sum_{k \notin C}{a_k} = 6 − a_3 = 6 − 5 = 1 $</p>
-<p>Since $a_1 = 2 ≥ 1$ and $a_2 = 1 ≥ 1$ the corresponding cover cut is $x_1 + x_2 ≥ 1$</p>
+<p>For the sake of simplicity we will take as example a spin-off based on the catering problem in the next exercise. Suppose we have 160 EUR and we have only 3 plateaus: a small one, a medium one and a large one. This time we want to maximize the number of programmers to be served within our budget.</p>
+<p>We have the constraints:</p>
+<p>$ 50x_0 + 90x_1 + 110x_2 \leq 160$</p>
+<p>$ x_0, x_1, x_2 \in \{0, 1\} $</p>
+<p>Let C = {90, 110} be our minimal cover.</p>
+<p>Then $160 - 50 = 110 $</p>
+<p>We will have the corresponding cover cut: $x_1 + x_2 \leq 1$</p>
 
 </div>
 </div>
@@ -13579,7 +13580,7 @@ $2x_1 + x_2 + 5x_3 ≥ 6$</p>
 <p>$ x_i \in \mathbb{Z} \ for \ i=0,1,2 $</p>
 <p>Solving the relaxation implies that the last constraint is not taken into consideration.
 A B&amp;B approach would be solving first the relaxation and then add new branches with two new constraints on the variable with the biggest fractional part.
-If all variables are integers, we found the optimum, if not, we compute the current solution. Since it's a minimisation problem, we round the variables up. The current relaxation solution is our lower bound and the current (rounded) solution is our upper bound. We want to improve the current bounds as much as we can. 
+If all variables are integers, we found the optimum, if not, we compute the current solution. Since it's a minimization problem, we round the variables up. The current relaxation solution is our lower bound and the current (rounded) solution is our upper bound. We want to improve the current bounds as much as we can. 
 If $x'_j$ is our variable with the largest fractional value, then we solve two more problems, each with a different additional constraint $ x_j &gt;= [x'_j]$ and $x_j &lt;= [x'_j]$. We apply this algorithm on each branch until we reach to infeasible solutions, or the upper bounds are not improving.</p>
 
 </div>
