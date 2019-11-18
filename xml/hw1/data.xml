@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<articles>
+    <article id="bk101">
+        <author>
+            <name>Gambardella, Matthew</name>
+            <affiliations>
+                <affiliation>West University of Timisoara</affiliation>
+                <affiliation>University of Berlin</affiliation>
+            </affiliations>
+        </author>
+        <category type="journal">
+            <name>Journal101</name>
+        </category>
+        <faculty>Computer Science</faculty>
+        <title>XML Developer's Guide</title>
+        <publish_date>2000-10-01</publish_date>
+        <isbn>978-3-16-148410-0</isbn>
+    </article>
+
+    <article id="bk102">
+        <author>
+            <name>Gambardella, Matthew</name>
+            <affiliations>
+                <affiliation>West University of Timisoara</affiliation>
+                <affiliation>University of Berlin</affiliation>
+            </affiliations>
+        </author>
+        <category type="conference">
+            <name>London Conference</name>
+        </category>
+        <faculty>Computer Science</faculty>
+        <title>Json Developer's Guide</title>
+        <publish_date>2000-10-01</publish_date>
+        <isbn>861-2-22-141480-2</isbn>
+    </article>
+</articles>

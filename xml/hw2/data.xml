@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<catalog>
+    <articles>
+        <article id="art1" authorId="au01" categoryId="ctg02">
+            <faculty>Computer Science</faculty>
+            <title>XML Developer's Guide</title>
+            <publish_date>2000-10-01</publish_date>
+            <isbn>978-3-16-148410-0</isbn>
+        </article>
+
+        <article id="bk102" categoryId="ctg01">
+            <faculty>Computer Science</faculty>
+            <title>Json Developer's Guide</title>
+            <publish_date>2000-01-01</publish_date>
+            <isbn>861-2-22-141480-2</isbn>
+        </article>
+    </articles>
+
+    <authors>
+        <author id="au01">
+            <name>Gambardella, Matthew</name>
+            <affiliations>
+                <affiliation>West University of Timisoara</affiliation>
+                <affiliation>University of Berlin</affiliation>
+            </affiliations>
+        </author>
+        <author id="au01">
+            <name>Simone, Nelson</name>
+            <affiliations>
+                <affiliation>University of Prague</affiliation>
+            </affiliations>
+        </author>
+    </authors>
+
+    <categories>
+        <category id="ctg01" type="journal">
+            <name>IEEE Transactions on Evolutionary Computation</name>
+        </category>
+        <category id="ctg02" type="conference">
+            <name>ACM Conference of London</name>
+        </category>
+    </categories>
+</catalog>
