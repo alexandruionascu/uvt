@@ -1,26 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
-<xsl:template match="/">
-  <html>
-  <body>
-  <h2>My CD Collection</h2>
-  <xsl:apply-templates/>
-  </body>
-  </html>
-</xsl:template>
-
-<xsl:template match="author">
-  <p>
-  <xsl:apply-templates select="name"/>
-  </p>
-</xsl:template>
-
-<xsl:template match="name">
-  Title: <span style="color:#ff0000">
-  <xsl:value-of select="."/></span>
-  <br />
-</xsl:template>
-
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="/catalog">
+        <html>
+            <body>
+                <h2>University Management</h2>
+                <h3>List of Authors</h3>
+                <xsl:apply-templates select="authors/author"/>
+                <h3> List of Articles </h3>
+                <xsl:apply-templates select="articles/article"/>
+                <h3> List of Conferences / Journals </h3>
+                <xsl:apply-templates select="categories/category" />
+            </body>
+        </html>
+    </xsl:template>
+    <xsl:template match="author">
+        <ul>
+            <xsl:apply-templates select="name" />
+        </ul>
+    </xsl:template>
+    <xsl:template match="article">
+        <ul>
+            <xsl:apply-templates select="title" />
+        </ul>
+    </xsl:template>
+    <xsl:template match="category">
+        <ul>
+            <xsl:apply-templates select="name" />
+        </ul>
+    </xsl:template>
+    <xsl:template match="name | title ">
+        <li>
+            <i>
+                <a>
+                    <xsl:value-of select="." />
+                </a>
+            </i>
+        </li>
+    </xsl:template>
 </xsl:stylesheet>
