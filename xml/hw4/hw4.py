@@ -1,7 +1,6 @@
 from flask import Flask
 import lxml.etree as ET
 
-
 app = Flask(__name__)
 dom = ET.parse('data.xml')
 
