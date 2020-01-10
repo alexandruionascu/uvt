@@ -22,16 +22,19 @@ public class ApplicationResource extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
-		restConfiguration().component("servlet").port(9090).host("localhost").bindingMode(RestBindingMode.json);
-
-		rest().get("/hello-world").produces(MediaType.APPLICATION_JSON_VALUE).route()
+		restConfiguration().component("servlet").port(9090).host("localhost").bindingMode(RestBindingMode.auto);
+		
+		rest().get("/hello-world").produces(MediaType.ALL_VALUE).route()
 				.setBody(constant("Welcome to java techie")).endRest();
 
-		rest().get("/getOrders").produces(MediaType.APPLICATION_JSON_VALUE).route().setBody(() -> service.getOrders())
+		rest().get("/getOrders").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.getOrders().get(0))
 				.endRest();
 
-		rest().post("/addOrder").consumes(MediaType.APPLICATION_JSON_VALUE).type(Order.class).outType(Order.class)
-				.route().process(processor).endRest();
+		rest().get("/xml").produces(MediaType.APPLICATION_XHTML_XML_VALUE).route().setBody(() -> service.getXML())
+				.endRest();
+
+		//rest().post("/addOrder").consumes(MediaType.APPLICATION_JSON_VALUE).type(Order.class).outType(Order.class)
+		//		.route().process(processor).endRest();
 	}
 
 }

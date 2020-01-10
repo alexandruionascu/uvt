@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="/catalog">
+        <html>
+            <body>
+                <h2>University Management</h2>
+                <h3>List of Categories</h3>
+                There are <xsl:value-of select="count(categories/category[@type])" /> types of categories:
+                <xsl:apply-templates select="categories/category" />
+            </body>
+        </html>
+    </xsl:template>
+    <xsl:template match="category[@type]">
+        <li>
+            <xsl:value-of select="@type" /> 
+        </li>
+    </xsl:template>
+</xsl:stylesheet>
