@@ -18,5 +18,4 @@ public class UniversityProcessor implements Processor {
 	public void process(Exchange exchange) throws Exception {
 		service.addArticle(exchange.getIn().getBody(Article.class));
 	}
-
 }

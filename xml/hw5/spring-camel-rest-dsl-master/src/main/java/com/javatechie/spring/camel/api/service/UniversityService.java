@@ -14,6 +14,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import com.javatechie.spring.camel.api.dto.Article;
+import com.javatechie.spring.camel.api.dto.Catalog;
 
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
@@ -23,6 +24,8 @@ import org.w3c.dom.Document;
 public class UniversityService {
 
     final static String DATA_PATH = "data.xml";
+    private Catalog catalog;
+
 
 	@PostConstruct
 	public void initDB() {
@@ -65,7 +68,8 @@ public class UniversityService {
 			Document xslt = db.parse(transformPath);
 
 			xml.appendChild(xml.createElementNS(null, "root"));
-			Document result = transformXML(xml, xslt);
+            Document result = transformXML(xml, xslt);
+            
 			StringWriter writer = new StringWriter();
 			TransformerFactory tf = TransformerFactory.newInstance();
 			Transformer transformer = tf.newTransformer();
