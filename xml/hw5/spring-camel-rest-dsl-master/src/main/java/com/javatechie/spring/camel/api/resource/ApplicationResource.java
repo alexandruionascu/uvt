@@ -7,15 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 
-import com.javatechie.spring.camel.api.dto.Order;
 import com.javatechie.spring.camel.api.processor.OrderProcessor;
-import com.javatechie.spring.camel.api.service.OrderService;
+import com.javatechie.spring.camel.api.service.UniversityService;
 
 @Component
 public class ApplicationResource extends RouteBuilder {
 
 	@Autowired
-	private OrderService service;
+	private UniversityService service;
 
 	@BeanInject
 	private OrderProcessor processor;
@@ -23,18 +22,25 @@ public class ApplicationResource extends RouteBuilder {
 	@Override
 	public void configure() throws Exception {
 		restConfiguration().component("servlet").port(9090).host("localhost").bindingMode(RestBindingMode.auto);
-		
-		rest().get("/hello-world").produces(MediaType.ALL_VALUE).route()
-				.setBody(constant("Welcome to java techie")).endRest();
 
-		rest().get("/getOrders").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.getOrders().get(0))
+		rest().get("/hello-world").produces(MediaType.ALL_VALUE).route().setBody(constant("Welcome to java techie"))
 				.endRest();
 
-		rest().get("/xml").produces(MediaType.APPLICATION_XHTML_XML_VALUE).route().setBody(() -> service.getXML())
+		rest().get("/all").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listAll()).endRest();
+
+		rest().get("/articles").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listArticles())
 				.endRest();
 
-		//rest().post("/addOrder").consumes(MediaType.APPLICATION_JSON_VALUE).type(Order.class).outType(Order.class)
-		//		.route().process(processor).endRest();
+		rest().get("/authors").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listAuthors())
+				.endRest();
+
+		rest().get("/ids").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listIds()).endRest();
+
+		rest().get("/categories").produces(MediaType.APPLICATION_XML_VALUE).route()
+				.setBody(() -> service.listCategories()).endRest();
+
+		// rest().post("/addOrder").consumes(MediaType.APPLICATION_JSON_VALUE).type(Order.class).outType(Order.class)
+		// .route().process(processor).endRest();
 	}
 
 }
