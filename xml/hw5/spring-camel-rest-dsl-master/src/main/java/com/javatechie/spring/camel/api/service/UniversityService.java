@@ -13,6 +13,8 @@ import javax.xml.transform.dom.DOMResult;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import com.javatechie.spring.camel.api.dto.Article;
+
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 
@@ -26,6 +28,8 @@ public class UniversityService {
 	public void initDB() {
 		// pass
     }
+
+    // GET
     
     public String listAll() {
         return applyTransform(DATA_PATH, "transform1.xml");
@@ -45,6 +49,11 @@ public class UniversityService {
 
     public String listCategories() {
         return applyTransform(DATA_PATH, "transform5.xml");
+    }
+
+    // POST
+    public Article addArticle(Article article) {
+        return article;
     }
 
 	private static String applyTransform(String dataPth, String transformPath) {

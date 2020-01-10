@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 
-import com.javatechie.spring.camel.api.processor.OrderProcessor;
+import com.javatechie.spring.camel.api.dto.Article;
+import com.javatechie.spring.camel.api.processor.UniversityProcessor;
 import com.javatechie.spring.camel.api.service.UniversityService;
 
 @Component
@@ -17,7 +18,7 @@ public class ApplicationResource extends RouteBuilder {
 	private UniversityService service;
 
 	@BeanInject
-	private OrderProcessor processor;
+	private UniversityProcessor processor;
 
 	@Override
 	public void configure() throws Exception {
@@ -34,13 +35,15 @@ public class ApplicationResource extends RouteBuilder {
 		rest().get("/authors").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listAuthors())
 				.endRest();
 
+		
+
 		rest().get("/ids").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listIds()).endRest();
 
 		rest().get("/categories").produces(MediaType.APPLICATION_XML_VALUE).route()
 				.setBody(() -> service.listCategories()).endRest();
 
-		// rest().post("/addOrder").consumes(MediaType.APPLICATION_JSON_VALUE).type(Order.class).outType(Order.class)
-		// .route().process(processor).endRest();
+		rest().post("/article").consumes(MediaType.APPLICATION_JSON_VALUE).type(Article.class).outType(Article.class)
+			.route().process(processor).endRest();
 	}
 
 }
