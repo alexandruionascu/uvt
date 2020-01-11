@@ -1,0 +1,48 @@
+<catalog>
+  <articles>
+    <article>
+      <faculty>Computer Science</faculty>
+      <title>XML Developer&apos;s Guide</title>
+      <publish__date>2000-10-01</publish__date>
+      <isbn>978-3-16-148410-0</isbn>
+    </article>
+    <article>
+      <faculty>Computer Science</faculty>
+      <title>Json Developer&apos;s Guide</title>
+      <publish__date>2000-01-01</publish__date>
+      <isbn>861-2-22-141480-2</isbn>
+    </article>
+    <article>
+      <id>1</id>
+      <authorId>au1</authorId>
+      <categoryId>categ1</categoryId>
+      <faculty>Computer Science</faculty>
+      <title>REST Developers Guide</title>
+      <publish__date>2000-01-01</publish__date>
+      <isbn>978-3-16-148410-0</isbn>
+    </article>
+  </articles>
+  <authors>
+    <author>
+      <name>Gambardella, Matthew</name>
+      <affiliations>
+        <affiliation/>
+        <affiliation/>
+      </affiliations>
+    </author>
+    <author>
+      <name>Simone, Nelson</name>
+      <affiliations>
+        <affiliation/>
+      </affiliations>
+    </author>
+  </authors>
+  <categories>
+    <category>
+      <name>IEEE Transactions on Evolutionary Computation</name>
+    </category>
+    <category>
+      <name>ACM Conference of London</name>
+    </category>
+  </categories>
+</catalog>

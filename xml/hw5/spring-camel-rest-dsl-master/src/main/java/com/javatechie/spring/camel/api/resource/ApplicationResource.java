@@ -35,15 +35,16 @@ public class ApplicationResource extends RouteBuilder {
 		rest().get("/authors").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listAuthors())
 				.endRest();
 
-		
-
 		rest().get("/ids").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listIds()).endRest();
 
 		rest().get("/categories").produces(MediaType.APPLICATION_XML_VALUE).route()
 				.setBody(() -> service.listCategories()).endRest();
 
+		rest().get("/catalog").produces(MediaType.ALL_VALUE).route().setBody(() -> service.getCatalog())
+				.endRest();
+
 		rest().post("/article").consumes(MediaType.APPLICATION_JSON_VALUE).type(Article.class).outType(Article.class)
-			.route().process(processor).endRest();
+				.route().process(processor).endRest();
 	}
 
 }

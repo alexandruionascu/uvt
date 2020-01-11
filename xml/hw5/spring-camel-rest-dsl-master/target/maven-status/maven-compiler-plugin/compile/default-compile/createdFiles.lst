@@ -1,5 +1,10 @@
 com/javatechie/spring/camel/api/dto/Order.class
-com/javatechie/spring/camel/api/service/OrderService.class
+com/javatechie/spring/camel/api/dto/Article.class
+com/javatechie/spring/camel/api/processor/UniversityProcessor.class
+com/javatechie/spring/camel/api/service/UniversityService.class
+com/javatechie/spring/camel/api/dto/Category.class
+com/javatechie/spring/camel/api/dto/Catalog.class
 com/javatechie/spring/camel/api/resource/ApplicationResource.class
-com/javatechie/spring/camel/api/processor/OrderProcessor.class
 com/javatechie/spring/camel/api/CamelRestDslApplication.class
+com/javatechie/spring/camel/api/dto/Affiliation.class
+com/javatechie/spring/camel/api/dto/Author.class

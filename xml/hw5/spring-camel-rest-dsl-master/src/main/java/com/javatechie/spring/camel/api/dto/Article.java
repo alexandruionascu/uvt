@@ -1,9 +1,9 @@
 package com.javatechie.spring.camel.api.dto;
 
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,26 +14,21 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@XmlRootElement(name = "Article")
 public class Article {
-    @XmlAttribute(name="id")
+    @XStreamAsAttribute
     private String id;
-    
-    @XmlAttribute(name="authorId")
+
+    @XStreamAsAttribute
     private String authorId;
 
-    @XmlAttribute(name="categoryId")
+    @XStreamAsAttribute
     private String categoryId;
 
-    @XmlElement(name = "faculty") 
     private String faculty;
 
-    @XmlElement(name="title")
     private String title;
+    
+    private String publish_date;
 
-    @XmlElement(name="publish_date")
-    private String publishDate;
-
-    @XmlElement(name="isbn")
     private String isbn;
 }
