@@ -9,7 +9,7 @@ import com.javatechie.spring.camel.api.dto.Article;
 import com.javatechie.spring.camel.api.service.UniversityService;
 
 @Component
-public class UniversityProcessor implements Processor {
+public class AddArticleProcessor implements Processor {
 	
 	@Autowired
 	private UniversityService service;

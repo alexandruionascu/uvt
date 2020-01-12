@@ -8,7 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 
 import com.javatechie.spring.camel.api.dto.Article;
-import com.javatechie.spring.camel.api.processor.UniversityProcessor;
+import com.javatechie.spring.camel.api.processor.AddArticleProcessor;
+import com.javatechie.spring.camel.api.processor.RemoveArticleProcessor;
 import com.javatechie.spring.camel.api.service.UniversityService;
 
 @Component
@@ -18,14 +19,14 @@ public class ApplicationResource extends RouteBuilder {
 	private UniversityService service;
 
 	@BeanInject
-	private UniversityProcessor processor;
+	private RemoveArticleProcessor removeArticleProcessor;
+
+	@BeanInject
+	private AddArticleProcessor addArticleProcessor;
 
 	@Override
 	public void configure() throws Exception {
 		restConfiguration().component("servlet").port(9090).host("localhost").bindingMode(RestBindingMode.auto);
-
-		rest().get("/hello-world").produces(MediaType.ALL_VALUE).route().setBody(constant("Welcome to java techie"))
-				.endRest();
 
 		rest().get("/all").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listAll()).endRest();
 
@@ -40,11 +41,13 @@ public class ApplicationResource extends RouteBuilder {
 		rest().get("/categories").produces(MediaType.APPLICATION_XML_VALUE).route()
 				.setBody(() -> service.listCategories()).endRest();
 
-		rest().get("/catalog").produces(MediaType.ALL_VALUE).route().setBody(() -> service.getCatalog())
-				.endRest();
+		rest().get("/catalog").produces(MediaType.ALL_VALUE).route().setBody(() -> service.getCatalog()).endRest();
 
 		rest().post("/article").consumes(MediaType.APPLICATION_JSON_VALUE).type(Article.class).outType(Article.class)
-				.route().process(processor).endRest();
+				.route().process(addArticleProcessor).endRest();
+
+		rest().delete("/remove-article").consumes(MediaType.APPLICATION_JSON_VALUE).type(Article.class).outType(Article.class)
+				.route().process(removeArticleProcessor).endRest();
 	}
 
 }

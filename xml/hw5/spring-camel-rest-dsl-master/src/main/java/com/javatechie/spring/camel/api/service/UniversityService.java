@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.xml.parsers.DocumentBuilder;
@@ -26,6 +27,7 @@ import com.javatechie.spring.camel.api.dto.Catalog;
 import com.javatechie.spring.camel.api.dto.Category;
 import com.javatechie.spring.camel.api.dto.Affiliation;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
@@ -33,7 +35,7 @@ import org.w3c.dom.Document;
 @Service
 public class UniversityService {
 
-	final static String DATA_PATH = "data.xml";
+	final static String DATA_PATH = "data_service.xml";
 	private XStream xStream;
 
 	private static String inputStreamToString(InputStream is) throws Exception {
@@ -50,19 +52,23 @@ public class UniversityService {
 	private Catalog readCatalog(String xmlFilePath) throws Exception {
 		File file = new File(xmlFilePath);
 		String xml = inputStreamToString(new FileInputStream(file));
-		
+
 		Catalog catalog = (Catalog) xStream.fromXML(xml);
 		return catalog;
 	}
 
 	@PostConstruct
 	public void initDB() {
-		xStream = new XStream();
+		xStream = new XStream(new DomDriver("UTF-8"));
 		xStream.alias("catalog", Catalog.class);
 		xStream.alias("article", Article.class);
+		xStream.alias("articles", List.class);
 		xStream.alias("author", Author.class);
+		xStream.alias("authors", List.class);
 		xStream.alias("category", Category.class);
+		xStream.alias("categories", List.class);
 		xStream.alias("affiliation", Affiliation.class);
+		xStream.alias("affiliations", List.class);
 	}
 
 	public String getCatalog() {
@@ -102,15 +108,45 @@ public class UniversityService {
 		try {
 			Catalog catalog = readCatalog(DATA_PATH);
 			catalog.getArticles().add(article);
-			String xml =  xStream.toXML(catalog);
-			BufferedWriter writer = new BufferedWriter(new FileWriter("data_service.xml"));
+			String xml = xStream.toXML(catalog);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(DATA_PATH));
 			writer.write(xml);
 			writer.close();
 			return article;
 		} catch (Exception ex) {
 			return null;
 		}
+	}
 
+	// DELETE
+	public Article removeArticle(Article article) {
+		System.out.println(article.getId());
+		Article removed = null;
+		try {
+			Catalog catalog = readCatalog(DATA_PATH);
+			System.out.println(xStream.toXML(catalog));
+			System.out.println(xStream.toXML(article));
+			/*int idx = -1;
+			for (int i = 0; i < catalog.getArticles().size(); i++) {
+				System.out.println(String.format("%s %s", catalog.getArticles().get(i).getId(), article.getId()));
+				if (catalog.getArticles().get(i).getId().equals(article.getId())) {
+					idx = i;
+				}
+			}
+			removed = idx != -1 ? catalog.getArticles().get(idx) : null;
+			if (idx != -1) {
+				catalog.getArticles().remove(idx);
+			}*/
+			catalog.getArticles().remove(catalog.getArticles().size() - 1);
+			String xml = xStream.toXML(catalog);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(DATA_PATH));
+			writer.write(xml);
+			writer.close();
+			return removed;
+		} catch (Exception ex) {
+			// nothing
+			return removed;
+		}
 	}
 
 	private static String applyTransform(String dataPth, String transformPath) {
