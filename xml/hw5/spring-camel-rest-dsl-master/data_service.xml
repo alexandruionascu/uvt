@@ -2,10 +2,12 @@
   <articles>
     <article>
       <id>2</id>
+      <authorId>au1</authorId>
+      <categoryId>categ1</categoryId>
       <faculty>Computer Science</faculty>
-      <title>Json Developer&apos;s Guide</title>
+      <title>REST Developers Guide v3</title>
       <publish__date>2000-01-01</publish__date>
-      <isbn>861-2-22-141480-2</isbn>
+      <isbn>978-3-16-148410-0</isbn>
     </article>
   </articles>
   <authors>

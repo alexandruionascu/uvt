@@ -148,6 +148,36 @@ public class UniversityService {
 		}
 	}
 
+
+	// PUT
+	public Article updateArticle(Article article) {
+		Article updated = null;
+		try {
+			Catalog catalog = readCatalog(DATA_PATH);
+			System.out.println(xStream.toXML(catalog));
+			System.out.println(xStream.toXML(article));
+			int idx = -1;
+			for (int i = 0; i < catalog.articles.size(); i++) {
+				System.out.println(String.format("%s %s", catalog.articles.get(i).id, article.id));
+				if (catalog.articles.get(i).id.equals(article.id)) {
+					idx = i;
+				}
+			}
+			updated = idx != -1 ? catalog.articles.get(idx) : null;
+			if (idx != -1) {
+				catalog.articles.set(idx, article);
+			}
+			String xml = xStream.toXML(catalog);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(DATA_PATH));
+			writer.write(xml);
+			writer.close();
+			return updated;
+		} catch (Exception ex) {
+			// nothing
+			return updated;
+		}
+	}
+
 	private static String applyTransform(String dataPth, String transformPath) {
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

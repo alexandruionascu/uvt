@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import com.javatechie.spring.camel.api.dto.Article;
 import com.javatechie.spring.camel.api.processor.AddArticleProcessor;
 import com.javatechie.spring.camel.api.processor.RemoveArticleProcessor;
+import com.javatechie.spring.camel.api.processor.UpdateArticleProcessor;
 import com.javatechie.spring.camel.api.service.UniversityService;
 
 @Component
@@ -17,6 +18,9 @@ public class ApplicationResource extends RouteBuilder {
 
 	@Autowired
 	private UniversityService service;
+
+	@BeanInject
+	private UpdateArticleProcessor updateArticleProcessor;
 
 	@BeanInject
 	private RemoveArticleProcessor removeArticleProcessor;
@@ -30,9 +34,10 @@ public class ApplicationResource extends RouteBuilder {
 
 		rest().get("/all").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listAll()).endRest();
 
-
-		rest().get("/xml-catalog").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.getCatalog()).endRest();
-		rest().get("/xml-articles").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.getCatalog()).endRest();
+		rest().get("/xml-catalog").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.getCatalog())
+				.endRest();
+		rest().get("/xml-articles").produces(MediaType.APPLICATION_XML_VALUE).route()
+				.setBody(() -> service.getCatalog()).endRest();
 
 		rest().get("/articles").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listArticles())
 				.endRest();
@@ -50,7 +55,10 @@ public class ApplicationResource extends RouteBuilder {
 		rest().post("/article").consumes(MediaType.APPLICATION_JSON_VALUE).type(Article.class).outType(Article.class)
 				.route().process(addArticleProcessor).endRest();
 
-		rest().delete("/remove-article").consumes(MediaType.APPLICATION_JSON_VALUE).type(Article.class).outType(Article.class)
+		rest().put("/article").consumes(MediaType.APPLICATION_JSON_VALUE).type(Article.class).outType(Article.class)
+				.route().process(updateArticleProcessor).endRest();
+
+		rest().delete("/article").consumes(MediaType.APPLICATION_JSON_VALUE).type(Article.class).outType(Article.class)
 				.route().process(removeArticleProcessor).endRest();
 	}
 
