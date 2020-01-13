@@ -120,24 +120,23 @@ public class UniversityService {
 
 	// DELETE
 	public Article removeArticle(Article article) {
-		System.out.println(article.getId());
 		Article removed = null;
 		try {
 			Catalog catalog = readCatalog(DATA_PATH);
 			System.out.println(xStream.toXML(catalog));
 			System.out.println(xStream.toXML(article));
-			/*int idx = -1;
+			int idx = -1;
 			for (int i = 0; i < catalog.getArticles().size(); i++) {
-				System.out.println(String.format("%s %s", catalog.getArticles().get(i).getId(), article.getId()));
-				if (catalog.getArticles().get(i).getId().equals(article.getId())) {
+				System.out.println(String.format("%s %s", catalog.getArticles().get(i).id, article.id));
+				if (catalog.getArticles().get(i).id.equals(article.id)) {
 					idx = i;
 				}
 			}
 			removed = idx != -1 ? catalog.getArticles().get(idx) : null;
 			if (idx != -1) {
 				catalog.getArticles().remove(idx);
-			}*/
-			catalog.getArticles().remove(catalog.getArticles().size() - 1);
+			}
+			// catalog.getArticles().remove(catalog.getArticles().size() - 1);
 			String xml = xStream.toXML(catalog);
 			BufferedWriter writer = new BufferedWriter(new FileWriter(DATA_PATH));
 			writer.write(xml);

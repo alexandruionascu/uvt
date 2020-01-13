@@ -10,25 +10,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class Article {
     @XStreamAsAttribute
-    private String id;
+    public String id;
 
     @XStreamAsAttribute
-    private String authorId;
+    public String authorId;
 
     @XStreamAsAttribute
-    private String categoryId;
+    public String categoryId;
 
-    private String faculty;
+    public String faculty;
 
-    private String title;
+    public String title;
     
-    private String publish_date;
+    public String publish_date;
 
-    private String isbn;
+    public String isbn;
 }
