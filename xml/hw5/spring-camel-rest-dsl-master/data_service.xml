@@ -1,17 +1,31 @@
 <catalog>
-  <articles/>
+  <articles>
+    <article>
+      <id>2</id>
+      <faculty>Computer Science</faculty>
+      <title>Json Developer&apos;s Guide</title>
+      <publish__date>2000-01-01</publish__date>
+      <isbn>861-2-22-141480-2</isbn>
+    </article>
+  </articles>
   <authors>
     <author>
       <name>Gambardella, Matthew</name>
       <affiliations>
-        <affiliation/>
-        <affiliation/>
+        <affiliation>
+          <name>West University of Timisoara</name>
+        </affiliation>
+        <affiliation>
+          <name>University of Berlin</name>
+        </affiliation>
       </affiliations>
     </author>
     <author>
       <name>Simone, Nelson</name>
       <affiliations>
-        <affiliation/>
+        <affiliation>
+          <name>University of Prague</name>
+        </affiliation>
       </affiliations>
     </author>
   </authors>

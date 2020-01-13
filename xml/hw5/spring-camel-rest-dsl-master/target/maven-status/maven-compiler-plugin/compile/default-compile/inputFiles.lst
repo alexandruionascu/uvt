@@ -5,7 +5,6 @@
 /Users/alexionascu/Workspace/uvt/xml/hw5/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/processor/AddArticleProcessor.java
 /Users/alexionascu/Workspace/uvt/xml/hw5/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/service/UniversityService.java
 /Users/alexionascu/Workspace/uvt/xml/hw5/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/dto/Category.java
-/Users/alexionascu/Workspace/uvt/xml/hw5/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/dto/Order.java
 /Users/alexionascu/Workspace/uvt/xml/hw5/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/processor/RemoveArticleProcessor.java
 /Users/alexionascu/Workspace/uvt/xml/hw5/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/dto/Catalog.java
 /Users/alexionascu/Workspace/uvt/xml/hw5/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/CamelRestDslApplication.java

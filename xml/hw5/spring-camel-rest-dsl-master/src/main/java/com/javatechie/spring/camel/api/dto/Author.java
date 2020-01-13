@@ -2,23 +2,27 @@ package com.javatechie.spring.camel.api.dto;
 
 import java.util.List;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data
+//@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class Author {
     @XStreamAsAttribute
-    private String id;
+    @XStreamAlias("id")
+    public String id;
 
-    private String name;
+    @XStreamAlias("name")
+    public String name;
 
-    private List<Affiliation> affiliations;
-    
+    @XStreamAlias("affiliations")
+    public List<Affiliation> affiliations;
 }

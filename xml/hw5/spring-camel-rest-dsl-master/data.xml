@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <catalog
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="schema.xsd">
     <articles>
-        <article id="art1" authorId="au01" categoryId="ctg02">
+        <article id="bk101" authorId="au01" categoryId="ctg02">
             <faculty>Computer Science</faculty>
+            <id>1</id>
             <title>XML Developer's Guide</title>
             <publish_date>2000-10-01</publish_date>
             <isbn>978-3-16-148410-0</isbn>
         </article>
-
         <article id="bk102" categoryId="ctg01">
+            <id>2</id>
             <faculty>Computer Science</faculty>
             <title>Json Developer's Guide</title>
             <publish_date>2000-01-01</publish_date>
             <isbn>861-2-22-141480-2</isbn>
         </article>
     </articles>
-
     <authors>
         <author id="au01">
             <name>Gambardella, Matthew</name>
             <affiliations>
-                <affiliation>West University of Timisoara</affiliation>
-                <affiliation>University of Berlin</affiliation>
+                <affiliation>
+                    <name>West University of Timisoara</name>
+                </affiliation>
+                <affiliation>
+                    <name>University of Berlin</name>
+                </affiliation>
             </affiliations>
         </author>
         <author id="au02">
             <name>Simone, Nelson</name>
             <affiliations>
-                <affiliation>University of Prague</affiliation>
+                <affiliation>
+                    <name>University of Prague</name>
+                </affiliation>
             </affiliations>
         </author>
     </authors>
-
     <categories>
         <category id="ctg01" type="journal">
             <name>IEEE Transactions on Evolutionary Computation</name>

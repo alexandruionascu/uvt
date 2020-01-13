@@ -30,6 +30,10 @@ public class ApplicationResource extends RouteBuilder {
 
 		rest().get("/all").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listAll()).endRest();
 
+
+		rest().get("/xml-catalog").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.getCatalog()).endRest();
+		rest().get("/xml-articles").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.getCatalog()).endRest();
+
 		rest().get("/articles").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listArticles())
 				.endRest();
 

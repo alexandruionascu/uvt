@@ -107,7 +107,7 @@ public class UniversityService {
 	public Article addArticle(Article article) {
 		try {
 			Catalog catalog = readCatalog(DATA_PATH);
-			catalog.getArticles().add(article);
+			catalog.articles.add(article);
 			String xml = xStream.toXML(catalog);
 			BufferedWriter writer = new BufferedWriter(new FileWriter(DATA_PATH));
 			writer.write(xml);
@@ -126,15 +126,15 @@ public class UniversityService {
 			System.out.println(xStream.toXML(catalog));
 			System.out.println(xStream.toXML(article));
 			int idx = -1;
-			for (int i = 0; i < catalog.getArticles().size(); i++) {
-				System.out.println(String.format("%s %s", catalog.getArticles().get(i).id, article.id));
-				if (catalog.getArticles().get(i).id.equals(article.id)) {
+			for (int i = 0; i < catalog.articles.size(); i++) {
+				System.out.println(String.format("%s %s", catalog.articles.get(i).id, article.id));
+				if (catalog.articles.get(i).id.equals(article.id)) {
 					idx = i;
 				}
 			}
-			removed = idx != -1 ? catalog.getArticles().get(idx) : null;
+			removed = idx != -1 ? catalog.articles.get(idx) : null;
 			if (idx != -1) {
-				catalog.getArticles().remove(idx);
+				catalog.articles.remove(idx);
 			}
 			// catalog.getArticles().remove(catalog.getArticles().size() - 1);
 			String xml = xStream.toXML(catalog);

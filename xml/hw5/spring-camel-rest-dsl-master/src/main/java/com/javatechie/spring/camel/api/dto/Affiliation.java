@@ -1,5 +1,6 @@
 package com.javatechie.spring.camel.api.dto;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,5 +11,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Affiliation {
-    private String affiliation; 
+    @XStreamAlias("name")
+    private String name; 
 }

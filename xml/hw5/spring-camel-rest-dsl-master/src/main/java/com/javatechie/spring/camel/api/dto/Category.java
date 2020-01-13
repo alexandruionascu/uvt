@@ -10,21 +10,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data
+//@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class Category {
 
     @XStreamAsAttribute
-    private String id;
+    public String id;
 
     @XStreamAsAttribute
-    private String type;
+    public String type;
 
     @XStreamAsAttribute
-    private String categoryId;
+    public String categoryId;
 
-    private String name;
+    public String name;
 
 }

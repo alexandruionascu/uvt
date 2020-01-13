@@ -9,15 +9,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data
+// @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class Catalog {
     @XStreamAlias("articles")
-    private List<Article> articles;
+    public List<Article> articles;
     @XStreamAlias("authors")
-    private List<Author> authors;
+    public List<Author> authors;
     @XStreamAlias("categories")
-    private List<Category> categories;
+    public List<Category> categories;
 }
