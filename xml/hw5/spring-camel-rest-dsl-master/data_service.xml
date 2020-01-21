@@ -9,6 +9,24 @@
       <publish__date>2000-01-01</publish__date>
       <isbn>978-3-16-148410-0</isbn>
     </article>
+    <article>
+      <id>1</id>
+      <authorId>au1</authorId>
+      <categoryId>categ1</categoryId>
+      <faculty>Computer Science</faculty>
+      <title>REST Developers Guide v1</title>
+      <publish__date>2000-01-01</publish__date>
+      <isbn>978-3-16-148410-0</isbn>
+    </article>
+    <article>
+      <id>7</id>
+      <authorId>au1</authorId>
+      <categoryId>categ1</categoryId>
+      <faculty>Computer Science</faculty>
+      <title>REST Developers Guide v7</title>
+      <publish__date>2000-01-01</publish__date>
+      <isbn>978-3-16-148410-0</isbn>
+    </article>
   </articles>
   <authors>
     <author>
