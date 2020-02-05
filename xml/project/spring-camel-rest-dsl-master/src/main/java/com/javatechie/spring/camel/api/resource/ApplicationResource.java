@@ -57,13 +57,13 @@ public class ApplicationResource extends RouteBuilder {
 
 		rest().get("/catalog").produces(MediaType.ALL_VALUE).route().setBody(() -> service.getCatalog()).endRest();
 
-		rest().post("/article").consumes(MediaType.APPLICATION_JSON_VALUE).type(Song.class).outType(Song.class)
+		rest().post("/song").consumes(MediaType.APPLICATION_JSON_VALUE).type(Song.class).outType(Song.class)
 				.route().process(addSongProcessor).endRest();
 
-		rest().put("/article").consumes(MediaType.APPLICATION_JSON_VALUE).type(Song.class).outType(Song.class)
+		rest().put("/song").consumes(MediaType.APPLICATION_JSON_VALUE).type(Song.class).outType(Song.class)
 				.route().process(updateSongProcessor).endRest();
 
-		rest().delete("/article").consumes(MediaType.APPLICATION_JSON_VALUE).type(Song.class).outType(Song.class)
+		rest().delete("/song").consumes(MediaType.APPLICATION_JSON_VALUE).type(Song.class).outType(Song.class)
 				.route().process(removeSongProcessor).endRest();
 	}
 

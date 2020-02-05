@@ -12,11 +12,27 @@
                 </author>
             </authors>
         </song>
+
+        <song>
+            <id>2</id>
+            <title>Not Afraid</title>
+            <genreid>1</genreid>
+            <publishdate>2010-80-01</publishdate>
+            <authors>
+                <author>
+                    <id>1</id>
+                </author>
+            </authors>
+        </song>
     </songs>
     <authors>
         <author>
             <id>1</id>
             <name>Eminem</name>
+        </author>
+        <author>
+            <id>2</id>
+            <name>50 Cent</name>
         </author>
     </authors>
     <genres>
