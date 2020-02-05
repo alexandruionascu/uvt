@@ -8,7 +8,7 @@
       <publishdate>2000-10-01</publishdate>
     </song>
     <song>
-      <authorids>2</authorids>
+      <authorids>1, 2</authorids>
       <id>2</id>
       <genreid>1</genreid>
       <title>Not Afraid</title>
@@ -22,6 +22,7 @@
       <publishdate>2010-05-07</publishdate>
     </song>
     <song>
+      <authorids>2</authorids>
       <id>4</id>
       <genreid>3</genreid>
       <title>The Jam</title>

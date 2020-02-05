@@ -15,11 +15,18 @@
       <publishdate>2010-80-01</publishdate>
     </song>
     <song>
+      <authorids>2</authorids>
       <id>3</id>
       <genreid>1</genreid>
       <title>My Car</title>
-      <authorids>2</authorids>
       <publishdate>2010-05-07</publishdate>
+    </song>
+    <song>
+      <authorids>2</authorids>
+      <id>4</id>
+      <genreid>3</genreid>
+      <title>The Jam</title>
+      <publishdate>2010-10-10</publishdate>
     </song>
   </songs>
   <authors>

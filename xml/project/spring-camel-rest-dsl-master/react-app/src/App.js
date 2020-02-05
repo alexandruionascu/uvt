@@ -61,6 +61,20 @@ const postSong = songData => {
   });
 };
 
+const idsToAuthors = (csv, authors) => {
+  const ids = csv.split(",").map(x => x.trim());
+  let aut = [];
+  for (let id of ids) {
+    for (let author of authors) {
+      if (id === author.id._text) {
+        aut.push(author.name._text);
+      }
+    }
+  }
+
+  return aut.join(", ");
+};
+
 const App = () => {
   const [catalog, setCatalog] = React.useState(null);
   const songs = catalog ? catalog.songs.song : [];
@@ -86,11 +100,18 @@ const App = () => {
               <Box flex align="center" justify="center">
                 <Heading>List of Songs</Heading>
                 <List
-                  primaryKey="name"
+                  primaryKey={(song, i) => (
+                    <Text key={i}>
+                      #{song.id} {idsToAuthors(song.authorids, authors)} - {" "}
+                      {song.title}
+                    </Text>
+                  )}
                   secondaryKey="date"
                   data={songs.map(x => ({
-                    name: x.title._text,
-                    date: x.publishdate._text
+                    title: x.title._text,
+                    date: x.publishdate._text,
+                    id: x.id._text,
+                    authorids: x.authorids._text
                   }))}
                 />
               </Box>
@@ -99,7 +120,11 @@ const App = () => {
               <Box flex align="center" justify="center">
                 <Heading>List of Authors</Heading>
                 <List
-                  primaryKey={(author) => <Text>#{author.id} {author.name} </Text>}
+                  primaryKey={author => (
+                    <Text>
+                      #{author.id} {author.name}{" "}
+                    </Text>
+                  )}
                   data={authors.map(x => ({
                     id: x.id._text,
                     name: x.name._text
