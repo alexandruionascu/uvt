@@ -1,0 +1,10 @@
+/Users/alexionascu/Workspace/uvt/xml/project/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/dto/Genre.java
+/Users/alexionascu/Workspace/uvt/xml/project/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/dto/Song.java
+/Users/alexionascu/Workspace/uvt/xml/project/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/dto/Catalog.java
+/Users/alexionascu/Workspace/uvt/xml/project/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/CamelRestDslApplication.java
+/Users/alexionascu/Workspace/uvt/xml/project/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/resource/ApplicationResource.java
+/Users/alexionascu/Workspace/uvt/xml/project/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/processor/RemoveSongProcessor.java
+/Users/alexionascu/Workspace/uvt/xml/project/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/service/MusicLibraryService.java
+/Users/alexionascu/Workspace/uvt/xml/project/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/processor/AddSongProcessor.java
+/Users/alexionascu/Workspace/uvt/xml/project/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/dto/Author.java
+/Users/alexionascu/Workspace/uvt/xml/project/spring-camel-rest-dsl-master/src/main/java/com/javatechie/spring/camel/api/processor/UpdateSongProcessor.java

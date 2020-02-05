@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="/catalog">
+        <html>
+            <body>
+                <h2>University Management</h2>
+                <h3>List of Articles by Computer Science Departament</h3>
+                <xsl:apply-templates select="articles/article"/>
+            </body>
+        </html>
+    </xsl:template>
+    <xsl:template match="article[faculty/text() = 'Computer Science']">
+        <ul>
+            <xsl:apply-templates select="title" />
+            <xsl:apply-templates select="publish_date" />
+            <xsl:apply-templates select="isbn" />
+        </ul>
+    </xsl:template>
+    <xsl:template match="title">
+        <li>
+            <i>
+                <xsl:value-of select="." />
+            </i>
+        </li>
+    </xsl:template>
+    <xsl:template match="publish_date | isbn">
+        <sub>
+            <xsl:value-of select="." /> /
+        </sub>
+    </xsl:template>
+</xsl:stylesheet>

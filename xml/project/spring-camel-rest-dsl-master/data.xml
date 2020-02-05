@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<catalog>
+    <songs>
+        <song>
+            <id>1</id>
+            <title>Eminem</title>
+            <genreid>1</genreid>
+            <publishdate>2000-10-01</publishdate>
+            <authors>
+                <author>
+                    <id>1</id>
+                </author>
+            </authors>
+        </song>
+    </songs>
+    <authors>
+        <author>
+            <id>1</id>
+            <name>Eminem</name>
+        </author>
+    </authors>
+    <genres>
+        <genre>
+            <name>Rap</name>
+            <id>1</id>
+        </genre>
+
+        <genre>
+            <name>Rock</name>
+            <id>2</id>
+        </genre>
+
+        <genre>
+            <name>Manele</name>
+            <id>3</id>
+        </genre>
+    </genres>
+</catalog>
