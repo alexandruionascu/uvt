@@ -30,7 +30,12 @@ public class ApplicationResource extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
-		restConfiguration().component("servlet").port(9090).host("localhost").bindingMode(RestBindingMode.auto);
+		restConfiguration().component("servlet").port(9090)
+        .enableCORS(true) // <-- Important
+        .corsAllowCredentials(true) // <-- Important
+        .corsHeaderProperty("Access-Control-Allow-Origin","*")
+		.corsHeaderProperty("Access-Control-Allow-Headers","Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization")
+		.host("localhost").bindingMode(RestBindingMode.auto);
 
 		rest().get("/all").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listAll()).endRest();
 
