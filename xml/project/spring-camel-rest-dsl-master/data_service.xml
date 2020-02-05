@@ -4,8 +4,8 @@
       <authorids>1</authorids>
       <id>1</id>
       <genreid>1</genreid>
-      <title>Eminem</title>
-      <publishdate>2000-10-01</publishdate>
+      <title>Surviror</title>
+      <publishdate>2010-07-07</publishdate>
     </song>
     <song>
       <authorids>1, 2</authorids>
@@ -27,6 +27,13 @@
       <genreid>3</genreid>
       <title>The Jam</title>
       <publishdate>2010-10-10</publishdate>
+    </song>
+    <song>
+      <authorids>2</authorids>
+      <id>6</id>
+      <genreid>3</genreid>
+      <title>Da Club</title>
+      <publishdate>2009-09-07</publishdate>
     </song>
   </songs>
   <authors>
@@ -50,7 +57,7 @@
     </genre>
     <genre>
       <id>3</id>
-      <name>Manele</name>
+      <name>Pop</name>
     </genre>
   </genres>
 </catalog>

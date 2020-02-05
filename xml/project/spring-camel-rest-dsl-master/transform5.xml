@@ -4,16 +4,15 @@
     <xsl:template match="/catalog">
         <html>
             <body>
-                <h2>University Management</h2>
-                <h3>List of Categories</h3>
-                There are <xsl:value-of select="count(categories/category[@type])" /> types of categories:
-                <xsl:apply-templates select="categories/category" />
+                <h3>List of Genres</h3>
+                <i>There are <xsl:value-of select="count(genres/genre)" /> genres:</i>
+                <xsl:apply-templates select="genres/genre" />
             </body>
         </html>
     </xsl:template>
-    <xsl:template match="category[@type]">
+    <xsl:template match="genre">
         <li>
-            <xsl:value-of select="@type" /> 
+            <i><xsl:value-of select="name" /></i>
         </li>
     </xsl:template>
 </xsl:stylesheet>

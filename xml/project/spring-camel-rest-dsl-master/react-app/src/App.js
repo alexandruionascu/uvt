@@ -12,6 +12,8 @@ import {
   Text
 } from "grommet";
 
+import { Close } from "grommet-icons";
+
 var convert = require("xml-js");
 
 const AppBar = props => (
@@ -30,9 +32,6 @@ const AppBar = props => (
 
 const theme = {
   global: {
-    colors: {
-      brand: "#228BE6"
-    },
     font: {
       family: "Roboto",
       size: "18px",
@@ -45,6 +44,12 @@ const theme = {
   }
 };
 
+const fetchHtml = xslt => {
+  return fetch("http://localhost:9090/" + xslt).then(response =>
+    response.text()
+  );
+};
+
 const getCatalog = () => {
   return fetch("http://localhost:9090/xml-catalog", { method: "GET" })
     .then(response => response.text())
@@ -54,9 +59,23 @@ const getCatalog = () => {
     .then(jsonStr => JSON.parse(jsonStr));
 };
 
+const removeSong = id => {
+  return fetch("http://localhost:9090/song", {
+    method: "DELETE",
+    body: JSON.stringify({ id: id })
+  });
+};
+
 const postSong = songData => {
   return fetch("http://localhost:9090/song", {
     method: "POST",
+    body: JSON.stringify(songData)
+  });
+};
+
+const putSong = songData => {
+  return fetch("http://localhost:9090/song", {
+    method: "PUT",
     body: JSON.stringify(songData)
   });
 };
@@ -80,6 +99,8 @@ const App = () => {
   const songs = catalog ? catalog.songs.song : [];
   const genres = catalog ? catalog.genres.genre : [];
   const authors = catalog ? catalog.authors.author : [];
+  const [listHtml, setListHtml] = React.useState("");
+  const [genreHtml, setGenreHtml] = React.useState("");
 
   console.log(songs);
 
@@ -87,14 +108,22 @@ const App = () => {
     if (!catalog) {
       getCatalog().then(data => setCatalog(data.catalog));
     }
+
+    if (listHtml.length === 0) {
+      fetchHtml("all").then(data => setListHtml(data));
+    }
+
+    if (genreHtml.length === 0) {
+      fetchHtml("genres").then(data => setGenreHtml(data));
+    }
   });
 
   return (
     <Grommet theme={theme} full>
       <Box fill>
-        <AppBar>Kings of Music</AppBar>
+        <AppBar>Music Library</AppBar>
 
-        <Box margin="medium" pad="large" flex align="center" justify="center">
+        <Box margin="large" pad="large" flex align="center" justify="center">
           <Tabs>
             <Tab title="Songs">
               <Box flex align="center" justify="center">
@@ -102,14 +131,27 @@ const App = () => {
                 <List
                   primaryKey={(song, i) => (
                     <Text key={i}>
-                      #{song.id} {idsToAuthors(song.authorids, authors)} - {" "}
-                      {song.title}
+                      #{song.id} {idsToAuthors(song.authorids, authors)} -{" "}
+                      {song.title} | {song.publishdate}
                     </Text>
                   )}
-                  secondaryKey="date"
+                  secondaryKey={(song, i) => (
+                    <Box key={song.id}>
+                      <Button
+                        key={i}
+                        icon={<Close />}
+                        onClick={() => {
+                          removeSong(song.id).then(() =>
+                            window.location.reload()
+                          );
+                        }}
+                        primary
+                      />
+                    </Box>
+                  )}
                   data={songs.map(x => ({
                     title: x.title._text,
-                    date: x.publishdate._text,
+                    publishdate: x.publishdate._text,
                     id: x.id._text,
                     authorids: x.authorids._text
                   }))}
@@ -132,6 +174,16 @@ const App = () => {
                 />
               </Box>
             </Tab>
+            <Tab title="List All - XPath">
+              <Box flex align="center" justify="center">
+                <Text style={{fontFamily: theme.global.font.family}} dangerouslySetInnerHTML={{ __html: listHtml }} />
+              </Box>
+            </Tab>
+            <Tab title="Count Genres - XPath">
+              <Box flex align="center" justify="center">
+                <div dangerouslySetInnerHTML={{ __html: genreHtml }} />
+              </Box>
+            </Tab>
             <Tab title="Genres">
               <Box flex align="center" justify="center">
                 <Heading>List of Genres</Heading>
@@ -146,15 +198,49 @@ const App = () => {
               </Box>
             </Tab>
             <Tab title="Add Song">
-              <Form onSubmit={event => postSong(event.value)} margin="medium">
+              <Form
+                onSubmit={event =>
+                  postSong(event.value).then(() => window.location.reload())
+                }
+                margin="large"
+                pad="large"
+              >
                 <Heading>Add Song</Heading>
                 <FormField name="title" label="title" required />
                 <FormField name="id" label="Id" required />
                 <FormField name="publishdate" label="Publish Date" required />
-                <FormField name="authors" label="Author Ids in CSV" required />
+                <FormField
+                  name="authorids"
+                  label="Author Ids in CSV"
+                  required
+                />
                 <FormField name="genreid" label="Genre Id" required />
                 <Button type="submit" primary label="Submit" />
               </Form>
+              <br /> <br />
+            </Tab>
+
+            <Tab title="Edit Song">
+              <Form
+                onSubmit={event =>
+                  putSong(event.value).then(() => window.location.reload())
+                }
+                margin="large"
+                pad="large"
+              >
+                <Heading>Edit Song</Heading>
+                <FormField name="title" label="title" required />
+                <FormField name="id" label="Id" required />
+                <FormField name="publishdate" label="Publish Date" required />
+                <FormField
+                  name="authorids"
+                  label="Author Ids in CSV"
+                  required
+                />
+                <FormField name="genreid" label="Genre Id" required />
+                <Button type="submit" primary label="Submit" />
+              </Form>
+              <br /> <br />
             </Tab>
           </Tabs>
         </Box>

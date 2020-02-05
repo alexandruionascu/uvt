@@ -41,18 +41,8 @@ public class ApplicationResource extends RouteBuilder {
 
 		rest().get("/xml-catalog").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.getCatalog())
 				.endRest();
-		rest().get("/xml-articles").produces(MediaType.APPLICATION_XML_VALUE).route()
-				.setBody(() -> service.getCatalog()).endRest();
 
-		rest().get("/articles").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listArticles())
-				.endRest();
-
-		rest().get("/authors").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listAuthors())
-				.endRest();
-
-		rest().get("/ids").produces(MediaType.APPLICATION_XML_VALUE).route().setBody(() -> service.listIds()).endRest();
-
-		rest().get("/categories").produces(MediaType.APPLICATION_XML_VALUE).route()
+		rest().get("/genres").produces(MediaType.APPLICATION_XML_VALUE).route()
 				.setBody(() -> service.listCategories()).endRest();
 
 		rest().get("/catalog").produces(MediaType.ALL_VALUE).route().setBody(() -> service.getCatalog()).endRest();
@@ -64,7 +54,7 @@ public class ApplicationResource extends RouteBuilder {
 				.route().process(updateSongProcessor).endRest();
 
 		rest().delete("/song").consumes(MediaType.APPLICATION_JSON_VALUE).type(Song.class).outType(Song.class)
-				.route().process(removeSongProcessor).endRest();
+				.route().process(removeSongProcessor).setHeader("Origin",constant("http://localhost:3000")).endRest();
 	}
 
 }

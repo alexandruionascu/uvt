@@ -4,13 +4,12 @@
     <xsl:template match="/catalog">
         <html>
             <body>
-                <h2>University Management</h2>
-                <h3>List of Authors</h3>
+                <h5>Authors</h5>
                 <xsl:apply-templates select="authors/author"/>
-                <h3> List of Articles </h3>
-                <xsl:apply-templates select="articles/article"/>
-                <h3> List of Conferences / Journals </h3>
-                <xsl:apply-templates select="categories/category" />
+                <h5>Songs</h5>
+                <xsl:apply-templates select="songs/song"/>
+                <h5>Genres</h5>
+                <xsl:apply-templates select="genres/genre" />
             </body>
         </html>
     </xsl:template>
@@ -19,12 +18,12 @@
             <xsl:apply-templates select="name" />
         </ul>
     </xsl:template>
-    <xsl:template match="article">
+    <xsl:template match="song">
         <ul>
             <xsl:apply-templates select="title" />
         </ul>
     </xsl:template>
-    <xsl:template match="category">
+    <xsl:template match="genre">
         <ul>
             <xsl:apply-templates select="name" />
         </ul>
