@@ -1,54 +1,55 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <catalog>
-    <songs>
-        <song>
-            <id>1</id>
-            <title>Eminem</title>
-            <genreid>1</genreid>
-            <publishdate>2000-10-01</publishdate>
-            <authors>
-                <author>
-                    <id>1</id>
-                </author>
-            </authors>
-        </song>
-
-        <song>
-            <id>2</id>
-            <title>Not Afraid</title>
-            <genreid>1</genreid>
-            <publishdate>2010-80-01</publishdate>
-            <authors>
-                <author>
-                    <id>1</id>
-                </author>
-            </authors>
-        </song>
-    </songs>
-    <authors>
-        <author>
-            <id>1</id>
-            <name>Eminem</name>
-        </author>
-        <author>
-            <id>2</id>
-            <name>50 Cent</name>
-        </author>
-    </authors>
-    <genres>
-        <genre>
-            <name>Rap</name>
-            <id>1</id>
-        </genre>
-
-        <genre>
-            <name>Rock</name>
-            <id>2</id>
-        </genre>
-
-        <genre>
-            <name>Manele</name>
-            <id>3</id>
-        </genre>
-    </genres>
+  <songs>
+    <song>
+      <authorids>1</authorids>
+      <id>1</id>
+      <genreid>1</genreid>
+      <title>Eminem</title>
+      <publishdate>2000-10-01</publishdate>
+    </song>
+    <song>
+      <authorids>2</authorids>
+      <id>2</id>
+      <genreid>1</genreid>
+      <title>Not Afraid</title>
+      <publishdate>2010-80-01</publishdate>
+    </song>
+    <song>
+      <authorids>2</authorids>
+      <id>3</id>
+      <genreid>1</genreid>
+      <title>My Car</title>
+      <publishdate>2010-05-07</publishdate>
+    </song>
+    <song>
+      <id>4</id>
+      <genreid>3</genreid>
+      <title>The Jam</title>
+      <publishdate>2010-10-10</publishdate>
+    </song>
+  </songs>
+  <authors>
+    <author>
+      <id>1</id>
+      <name>Eminem</name>
+    </author>
+    <author>
+      <id>2</id>
+      <name>50 Cent</name>
+    </author>
+  </authors>
+  <genres>
+    <genre>
+      <id>1</id>
+      <name>Rap</name>
+    </genre>
+    <genre>
+      <id>2</id>
+      <name>Rock</name>
+    </genre>
+    <genre>
+      <id>3</id>
+      <name>Manele</name>
+    </genre>
+  </genres>
 </catalog>

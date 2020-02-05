@@ -16,7 +16,7 @@ import lombok.ToString;
 public class Song {
 
     @XStreamAlias("authors")
-    public List<Author> authors;
+    public String authorids;
 
     public String id;
 

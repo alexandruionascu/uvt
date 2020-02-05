@@ -58,7 +58,7 @@ public class ApplicationResource extends RouteBuilder {
 		rest().get("/catalog").produces(MediaType.ALL_VALUE).route().setBody(() -> service.getCatalog()).endRest();
 
 		rest().post("/song").consumes(MediaType.APPLICATION_JSON_VALUE).type(Song.class).outType(Song.class)
-				.route().process(addSongProcessor).endRest();
+				.route().process(addSongProcessor).setHeader("Origin",constant("http://localhost:3000")).endRest();
 
 		rest().put("/song").consumes(MediaType.APPLICATION_JSON_VALUE).type(Song.class).outType(Song.class)
 				.route().process(updateSongProcessor).endRest();
